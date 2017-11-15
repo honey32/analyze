@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=”robots” content=”noindex” />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Analyzer</title>
+    <script src='./analyze-opt.js'></script>
+    <style>
+        body {
+            font-size: 1.2rem;
+        }
+        form > * {
+            font-size: inherit;
+            display: block;
+        }
+
+        input {
+            padding: 0.5rem 0.1rem;
+            font-family: sans-serif;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        label {
+            margin-top: 2rem;
+        }
+
+        output {
+            padding: 0.5rem;
+            transition: backgrond-color 500ms linear;
+            background-color: transparent;
+        }
+
+        .emphasized {
+            background-color: #ccf;
+        }
+    </style>
+</head>
+<body>
+    <div>解析的にt<sub>0</sub>を求めます</div>
+    <form name='form' oninput="onFormInput()">
+        <label>n_bar=</label>
+        <input name="nbar" type="number" autocomplete="off">
+        <label>t=</label>
+        <input name="t" type="number" autocomplete="off">
+        <label>t'=</label>
+        <input name="tprime" type="number" autocomplete="off">
+        <label><b>t<sub>0</sub></b>=</label>
+        <output name="output"></output>
+    </form>
+    
+    <script>
+        window.onFormInput = () => {
+            const form = document.forms.form
+            if (form.nbar.value && form.t.value && form.tprime.value) {
+                form.output.classList.add('emphasized')
+                setTimeout(() => {
+                    form.output.classList.remove('emphasized')
+                }, 1000)
+                try {
+                    const nb = 1 * form.nbar.value
+                    const t = 1 * form.t.value
+                    const tprime= 1 * form.tprime.value
+                    form.output.value = Analyzer.analyze(nb, t, tprime)
+                } catch (e) {
+                    form.output.value = "ERROR!!"
+                }
+            } else {
+                form.output.value = ""
+            }
+            
+        }
+    </script>
+</body>
+</html>
