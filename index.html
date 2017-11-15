@@ -11,22 +11,28 @@
         body {
             font-size: 1.2rem;
         }
-        form > * {
-            font-size: inherit;
-            display: block;
+        
+        form > div {
+            margin-top: 2rem;
+            display: flex;
         }
 
         input {
+            display: block;
+            font-size: inherit;
             margin-top: 0.2rem;
             line-height: 1;
             padding: 0.5rem 0.1rem;
             font-family: sans-serif;
-            width: 100%;
+            flex-grow: 1;
             box-sizing: border-box;
+            align-items: center;
         }
 
         label {
-            margin-top: 2rem;
+            display: block;
+            flex-shrink: 0;
+            padding: 0.6rem 0.3rem;
         }
 
         output {
@@ -42,19 +48,28 @@
 </head>
 <body>
     <div>解析的にt<sub>0</sub>を求めます</div>
-    <form name='form' oninput="onFormInput()">
-        <label>n_bar=</label>
-        <input name="nbar" type="number" autocomplete="off">
-        <label>t=</label>
-        <input name="t" type="number" autocomplete="off">
-        <label>t'=</label>
-        <input name="tprime" type="number" autocomplete="off" onchange="this.blur()">
-        <label><b>t<sub>0</sub></b>=</label>
-        <output name="output"></output>
-    </form>
     <div>
         <a href="https://github.com/honey32/analyze/blob/master/Analyzer.scala">ソースコードはこちら</a>    
     </div>
+    <form name='form' oninput="onFormInput()">
+        <div>
+            <label>n_bar=</label>
+            <input name="nbar" type="number" autocomplete="off">
+        </div>
+        <div>
+            <label>t=</label>
+            <input name="t" type="number" autocomplete="off">
+        </div>
+        <div>
+            <label>t'=</label>
+            <input name="tprime" type="number" autocomplete="off" onchange="this.blur()">
+        </div>
+        <div>
+            <label><b>t<sub>0</sub></b>=</label>
+            <output name="output"></output>
+        </div>
+        
+    </form>
     
     
     <script>
