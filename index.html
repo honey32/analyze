@@ -33,15 +33,17 @@
         label {
             display: block;
             flex-shrink: 0;
-            line-height: 1;
-            padding: 1rem 0.3rem;
         }
 
         output {
-            padding: 0.5rem;
             transition: backgrond-color 500ms linear;
             background-color: transparent;
         }
+
+        label, output {
+            line-height: 1;
+            padding: 1rem 0.3rem;
+        } 
 
         .emphasized {
             background-color: #ccf;
